@@ -14,6 +14,7 @@ class DepartmentComponent extends Component
     use WithFileUploads;
 
     public $ids;
+    public $dbphoto = null;
     public $title;
     public $description;
     public $active  = 0;
@@ -27,6 +28,7 @@ class DepartmentComponent extends Component
         $this->description = '';
         $this->active = 0;
         $this->file = '';
+        $this->dbphoto = '';
         $this->files = [];
     }
 
@@ -65,10 +67,10 @@ class DepartmentComponent extends Component
         $category = Category::where('id',$id)->first();
         $this->ids = $category->id;
         $this->title = $category->title;
-        $this->description = $designation->description;
-        $this->active = $designation->active;
-        $this->file = $designation->file;
-        $this->files = $designation->files;
+        $this->description = $category->description;
+        $this->active = $category->active;
+        //$this->file = $category->file;
+        //$this->files = $category->files;
 
     }
 
@@ -78,13 +80,13 @@ class DepartmentComponent extends Component
             'title' => 'required' ,
             'description' => 'nullable' ,
             'active' => 'nullable' ,
-            'file' => 'nullable|image|max:1024' ,
-            'files' => 'nullable|image|max:1024'
+            'file' => 'nullable' ,
+            'files' => 'nullable'
             ]);
         if($this->ids)
-        {
+        { 
             $category = Category::find($this->ids);
-            $category->update([
+            return $category->update([
                 'title' => $this->title ,
                 'description' => $this->description ,
                 'active' => $this->active ,
@@ -97,6 +99,26 @@ class DepartmentComponent extends Component
         }
     }
 
+    public function active($ids)
+    {
+        $category = Category::find($ids);
+        if($category){
+            $category->active = 1;
+            $category->save();
+            session()->flash('message','Category Active Done');
+        }
+    }
+
+    public function inActive($ids)
+    {
+        $category = Category::find($ids);
+        if($category){
+            $category->active = 0;
+            $category->save();
+            session()->flash('message','Category Inactive Done');
+        }
+    }
+
     public function destroy($id)
     {
         if($id){
@@ -106,6 +128,7 @@ class DepartmentComponent extends Component
 
 
     }
+
     public function render()
     {
         return view('livewire.department.department-component',

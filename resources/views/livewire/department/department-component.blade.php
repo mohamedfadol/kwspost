@@ -32,17 +32,24 @@
             <td>{{ $category->title }}</td>
             <td>{{ $category->file }}</td>
             <td>{{ $category->description }}</td>
-            <td>{{ $category->active }}</td>
+            <td class="text-center">
+                @if($category->active == 0)
+                    <button type="button" class="btn btn-success btn-block" wire:click.prevent="active({{ $category->id }})">
+                        Active
+                    </button>
+                    @else
+                    <button type="button" class="btn btn-warning btn-block" wire:click.prevent="inActive({{ $category->id }})">
+                        InActive
+                    </button>
+                @endif
+            </td>
             <td>{{ $category->posts->count() }}</td>
-
-            <td>
+            <td class="text-center">
                 <div class="btn-group content-align-center">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg-update-category" wire:click.prevent="edit({{ $category->id }})">
                         Edit
                     </button>
-                    <button type="button" class="btn btn-warning">
-                        InActive
-                    </button>
+
                     <button type="button" class="btn btn-danger" wire:click.prevent="destroy({{ $category->id }})">
                         Delete
                     </button>

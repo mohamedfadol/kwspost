@@ -32,17 +32,24 @@
             <td><?php echo e($category->title); ?></td>
             <td><?php echo e($category->file); ?></td>
             <td><?php echo e($category->description); ?></td>
-            <td><?php echo e($category->active); ?></td>
+            <td class="text-center">
+                <?php if($category->active == 0): ?>
+                    <button type="button" class="btn btn-success btn-block" wire:click.prevent="active(<?php echo e($category->id); ?>)">
+                        Active
+                    </button>
+                    <?php else: ?>
+                    <button type="button" class="btn btn-warning btn-block" wire:click.prevent="inActive(<?php echo e($category->id); ?>)">
+                        InActive
+                    </button>
+                <?php endif; ?>
+            </td>
             <td><?php echo e($category->posts->count()); ?></td>
-
-            <td>
+            <td class="text-center">
                 <div class="btn-group content-align-center">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg-update-category" wire:click.prevent="edit(<?php echo e($category->id); ?>)">
                         Edit
                     </button>
-                    <button type="button" class="btn btn-warning">
-                        InActive
-                    </button>
+
                     <button type="button" class="btn btn-danger" wire:click.prevent="destroy(<?php echo e($category->id); ?>)">
                         Delete
                     </button>
