@@ -38,12 +38,19 @@ return [
     'User Name' => 'User Name',
 
     // Sidebar translation
-    'Human Resource' => 'Human Resource',
-    "HRM" => "HRM",
-    "Add Designation" => "Add Designation",
-    "Manage Designation" =>  "Manage Designation",
-    "Add Employee" => "Add Employee",
-    "Manage Employee" => "Manage Employee",
+    'General Control Panel' => 'General Control Panel',
+    "Control Panel" => "Control Panel",
+    "Main Home" => "Main Home",
+    "Departments" =>  "Departments",
+    "Posts" => "Posts",
+    "Controling Users" => "Controling Users",
+    "Administration" => "Administration",
+    "Home" => "Home",
+    "Choose language" => "Choose language",
+    "Users" => "Users",
+    "Kws-Post" => "Kws-Post",
+
+
 
 
 

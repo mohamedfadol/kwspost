@@ -1,8 +1,8 @@
-<div wire:ignore.self class="modal fade" id="modal-lg-create-designation" tabindex="-1" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="modal-lg-update-category" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Create New designation</h4>
+        <h4 class="modal-title">Update Category</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -18,14 +18,10 @@
 <form>
 <div class="card-body">
     <div class="form-group">
-        <label for="name">Designation Name</label>
-        <input type="text" name="name" wire:model="name" class="form-control form-control-sm" id="name" placeholder="Enter Designation Name">
+    <input type="hidden" name="ids" wire:model="ids">
+        <label for="name">Branch Name</label>
+        <input type="text" name="name" wire:model="name" class="form-control form-control-sm" id="name" placeholder="Enter designation Name">
         @error('name') <span class="text-danger">{{$message}}</span>@enderror
-    </div>
-    <div class="form-group">
-        <label for="Details">Designation Details</label>
-        <textarea type="text" name="Details" wire:model="Details" class="form-control form-control-sm" id="Details" placeholder="Enter Designation Details"></textarea>
-        @error('Details') <span class="text-danger">{{$message}}</span>@enderror
     </div>
 </div>
 <!-- /.card-body -->
@@ -36,7 +32,7 @@
 </div>
     <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save changes</button>
+        <button type="button" wire:click.prevent="update()" class="btn btn-primary">Update changes</button>
     </div>
     </div>
     <!-- /.modal-content -->

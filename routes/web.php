@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\DesignationComponent;
+use App\Http\Livewire\Department\DepartmentComponent;
 use App\Http\Livewire\AdminDashboardComponent;
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::group(
     Route::middleware(['auth:sanctum', 'verified','isAdmin'])->group(function () {
 
         Route::get('/admin/dashboard' , AdminDashboardComponent::class)->name('admin.dashboard');
-        Route::get('/admin/designatin' , DesignationComponent::class)->name('admin.designatin');
+        Route::get('/admin/categories' , DepartmentComponent::class)->name('admin.categories');
 
     });
 

@@ -42,14 +42,18 @@ return [
     'Confirm Password' => 'تأكيد كلمة السر',
     'Registration' => "تسجيل",
 
-    // Sidebar  translation
-
-    "Human Resource" => "الموارد البشرية",
-    "HRM" => "HRM",
-    "Add Designation" => "أضف التعيين",
-    "Manage Designation" => "إدارة التعيين",
-    "Add Employee" => "اضافة موظف",
-    "Manage Employee" => "إدارة الموظفين",
+    // Sidebar translation
+    'General Control Panel' => 'لوحة التحكم الرئيسية',
+    "Control Panel" => "لوحة التحكم",
+    "Main Home" => "الرئيسية",
+    "Departments" =>  "الأقسام",
+    "Posts" => "المنشورات",
+    "Controling Users" => "لوحة المستحدمين",
+    "Administration" => "الأدارة",
+    "Home" => "الرئيسية",
+    "Choose language" => "اختار لغة",
+    "Controling Us ers" => "المستخدمين",
+     "Kws-Post" => "Kws-Post",
 
 
 

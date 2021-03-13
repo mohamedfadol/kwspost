@@ -70,6 +70,7 @@ class DesignationComponent extends Component
 
 
     }
+
     public function render()
     {
         return view('livewire.designation-component',

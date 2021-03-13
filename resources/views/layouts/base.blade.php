@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HR</title>
+  <title>Kws-Post</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,50 +23,33 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
-
     @include('layouts.nav')
-
     @include('layouts.sidbare')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Dashboard v2</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v2</li>
-                </ol>
-            </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ __('message.Main Home') }}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">{{ __('message.Home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('message.Administration') }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
         <section class="content">
-        <div class="container-fluid">
-            {{ $slot }}
-        </div><!--/. container-fluid -->
+            <div class="container-fluid">
+                {{ $slot }}
+            </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
+    <aside class="control-sidebar control-sidebar-dark"></aside>
     @include('layouts.footer')
-
 </div>
-<!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
@@ -128,11 +111,11 @@
 
 <script>
     $(function () {
-        window.livewire.on('designation-added', () => {
-        $("#modal-lg-create-designation").modal("hide");
+        window.livewire.on('category-added', () => {
+        $("#modal-lg-create-category").modal("hide");
         });
-        window.livewire.on('designation-update', () => {
-        $("#modal-lg-update-designation").modal("hide");
+        window.livewire.on('category-update', () => {
+        $("#modal-lg-update-category").modal("hide");
         });
     });
 </script>
@@ -211,20 +194,20 @@
   })
 
 </script>
-         @stack('js')
+    @stack('js')
 
-        @livewireScripts
-    @livewireChartsScripts
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-    <!-- Your application script -->
-    <script>
-      const chart = new Chartisan({
-        el: '#chart',
-        url: "@chart('daily_orders')",
-      });
-    </script>
+    @livewireScripts
+@livewireChartsScripts
+<script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+<!-- Chartisan -->
+<script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+<!-- Your application script -->
+<script>
+    const chart = new Chartisan({
+    el: '#chart',
+    url: "@chart('daily_orders')",
+    });
+</script>
 
 </body>
 </html>
