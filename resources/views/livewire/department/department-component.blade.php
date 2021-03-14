@@ -17,11 +17,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category Title</th>
+                <th>Title</th>
                 <th>Image</th>
                 <th>Description</th>
-                <th>Category Active</th>
-                <th>Post Counts</th>
+                <th>Active</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
         <tr>
             <td>{{ $category->id }}</td>
             <td>{{ $category->title }}</td>
-            <td>{{ $category->file }}</td>
+            <td class="text-center"><img src="{{asset('assets/images/category')}}/{{ $category->file}}" width="80" /></td>
             <td>{{ $category->description }}</td>
             <td class="text-center">
                 @if($category->active == 0)
@@ -61,11 +61,11 @@
         <tfoot>
         <tr>
             <th>ID</th>
-            <th>Category Title</th>
+            <th>Title</th>
             <th>Image</th>
             <th>Description</th>
-            <th>Category Active</th>
-            <th>Post Counts</th>
+            <th>Active</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
         </tfoot>

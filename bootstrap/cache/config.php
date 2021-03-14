@@ -356,7 +356,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\kwspost\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\kwspost\\public\\assets/images',
       ),
       'public' => 
       array (

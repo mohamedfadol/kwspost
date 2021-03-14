@@ -17,11 +17,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category Title</th>
+                <th>Title</th>
                 <th>Image</th>
                 <th>Description</th>
-                <th>Category Active</th>
-                <th>Post Counts</th>
+                <th>Active</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
         <tr>
             <td><?php echo e($category->id); ?></td>
             <td><?php echo e($category->title); ?></td>
-            <td><?php echo e($category->file); ?></td>
+            <td class="text-center"><img src="<?php echo e(asset('assets/images/category')); ?>/<?php echo e($category->file); ?>" width="80" /></td>
             <td><?php echo e($category->description); ?></td>
             <td class="text-center">
                 <?php if($category->active == 0): ?>
@@ -61,11 +61,11 @@
         <tfoot>
         <tr>
             <th>ID</th>
-            <th>Category Title</th>
+            <th>Title</th>
             <th>Image</th>
             <th>Description</th>
-            <th>Category Active</th>
-            <th>Post Counts</th>
+            <th>Active</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
         </tfoot>

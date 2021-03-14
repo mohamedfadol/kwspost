@@ -46,7 +46,7 @@ unset($__errorArgs, $__bag); ?>
     </div>
     <div class="form-group">
         <label for="files">Category Images</label>
-        <input type="file" name="files[]" wire:model="files" class="form-control form-control-sm" id="files" multiple>
+        <input type="file" name="files" wire:model="files" class="form-control form-control-sm" id="files" multiple>
         <?php $__errorArgs = ['files'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

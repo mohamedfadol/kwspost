@@ -20,6 +20,7 @@ class DepartmentComponent extends Component
     public $active  = 0;
     public $file;
     public $files = [];
+    public $images;
 
     public function resetFormInputs()
     {
@@ -49,12 +50,13 @@ class DepartmentComponent extends Component
             $category->description = $this->description;
             $category->active = $this->active;
             $fileName = Carbon::now()->timestamp. '.' . $this->file->extension();
-            $this->file->storeAs('images',$fileName);
+            $this->file->storeAs('category',$fileName);
             $category->file = $fileName;
-            foreach ($this->files as $file) {
-                $file->store('files');
+            foreach ($this->files as $key => $file) {
+                $this->files[$key] = $file->store('category','public');
             }
-            //$category->files = $this->files;
+            $this->files = json_encode($this->files);
+            $category->files = $this->files;
             $category->save();
             session()->flash('message','Category Add Done');
             $this->resetFormInputs();

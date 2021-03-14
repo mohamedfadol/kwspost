@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
         <label for="files">Category Images</label>
-        <input type="file" name="files[]" wire:model="files" class="form-control form-control-sm" id="files" multiple>
+        <input type="file" name="files" wire:model="files" class="form-control form-control-sm" id="files" multiple>
         @error('files') <span class="text-danger">{{$message}}</span>@enderror
     </div>
     <div class="form-group">
