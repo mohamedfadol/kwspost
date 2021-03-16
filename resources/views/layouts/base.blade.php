@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kws-Post</title>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <title>{{ config('app.name', 'Laravel') }}</title>
+ 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -20,6 +22,7 @@
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('/template/dist/css/adminlte.min.css') }}">
+  @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -43,7 +46,7 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                {{ $slot }}
+            @yield('content')
             </div>
         </section>
     </div>
@@ -51,6 +54,7 @@
     @include('layouts.footer')
 </div>
 
+@yield('scripts')
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="{{ asset('/template/plugins/jquery/jquery.min.js') }}"></script>
@@ -110,32 +114,7 @@
 </script>
 
 <script>
-    $(function () {
-        window.livewire.on('category-added', () => {
-        $("#modal-lg-create-category").modal("hide");
-        });
-        window.livewire.on('category-update', () => {
-        $("#modal-lg-update-category").modal("hide");
-        });
-    }); 
-</script>
-
-<script>
   $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
 
     //Date range picker
     $('#reservationdate').datetimepicker({
@@ -170,23 +149,6 @@
       }
     )
 
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    });
-
     $("input[data-bootstrap-switch]").each(function(){
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
@@ -194,6 +156,6 @@
   })
 
 </script>
-    @livewireScripts
-</body>
+
+ </body>
 </html>

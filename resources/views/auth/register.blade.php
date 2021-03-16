@@ -1,9 +1,11 @@
-<x-guest-layout>
+@extends('layouts.guest')
+
+@section('content')
 <div class="hold-transition register-page mt-10">
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="../../index2.html" class="h1"><b>KWS</b>post</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Register a new membership</p>
@@ -79,5 +81,4 @@
 </div>
 </div>
 <!-- /.register-box -->
-
-</x-guest-layout>
+@endsection

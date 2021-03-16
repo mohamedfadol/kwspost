@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HR</title>
 
@@ -23,7 +23,7 @@
 
         <section class="content">
             <div class="container-fluid">
-             {{$slot}}
+             @yield('content')
             </div>
         </section>
 </div>

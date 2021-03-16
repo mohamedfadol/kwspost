@@ -1,4 +1,7 @@
-<div>
+@extends('layouts.base')
+
+
+@section('content')
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -834,6 +837,4 @@
       </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
-  </div> 
-  <!-- /.content-wrapper -->
-</div>
+@endsection

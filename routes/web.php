@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Department\DepartmentComponent;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Livewire\AdminDashboardComponent;
+use App\Http\Livewire\Department\DepartmentComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,15 +23,18 @@ Route::get('/', function () {
 // Start LaravelLocalization Admin Route Group For Aurages Panel
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
+        'prefix' => LaravelLocalization::setLocale(), 
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 // route for admin
     Route::middleware(['auth:sanctum', 'verified','isAdmin'])->group(function () {
 
-        Route::get('/admin/dashboard' , AdminDashboardComponent::class)->name('admin.dashboard');
-        Route::get('/admin/categories' , DepartmentComponent::class)->name('admin.categories');
+        Route::get('/admin/dashboard' , [HomeController::class ,'index'])->name('admin.dashboard');
+        Route::get('/admin/categories' , [CategoryController::class,'index'])->name('admin.categories');
+        Route::get('/admin/categories' , [CategoryController::class,'index'])->name('admin.categories');
+        Route::delete('/admin/categories/destroy/{id}' , [CategoryController::class,'destroy']);
+        
 
     });
 
