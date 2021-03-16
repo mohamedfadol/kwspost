@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        @if(session()->has('message'))
-            <div class="alert alert-success text-center toastrDefaultSuccess"> {{ session('message') }} </div>
+            @if(session()->has('success'))
+            <div class="alert alert-success text-center toastrDefaultSuccess"> {{ session('success') }} </div>
         @endif
+    <div class="card-header">
         <h3 class="card-title">
             <div class="btn-group">
-                <button type="button"  class="btn btn-info"  
-                    data-toggle="modal" data-target="#modal-lg-create-category">New Department</button>
+                <a type="button"  class="btn btn-success" href="{{route('categories.create')}}">
+                    {{ __('message.New Category') }}</a>
             </div>
         </h3>
     </div>
@@ -17,14 +17,14 @@
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Description</th>
-                    <th>Active</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                <tr> 
+                    <th>{{ __('message.ID') }}</th>
+                    <th>{{ __('message.Title') }}</th>
+                    <th>{{ __('message.Image') }}</th>
+                    <th>{{ __('message.Description') }}</th>
+                    <th>{{ __('message.Active') }}</th>
+                    <th>{{ __('message.Date') }}</th>
+                    <th>{{ __('message.Actions') }}</th>
                 </tr>
             </thead>
             @if($categories->count() > 0)
@@ -33,29 +33,32 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->title }}</td>
-                        <td class="text-center"><img src="{{asset('assets/images/category')}}/{{ $category->file}}" width="80" /></td>
+                        <td class="text-center">
+                            <img src="{{ URL::asset('/storage/category/image/'.$category->file) }}" width="80" />
+                        </td>
                         <td>{{ $category->description }}</td>
                         <td class="text-center">
                             @if($category->active == 0)
-                                <button type="button" class="btn btn-success btn-block" >
-                                    Active
-                                </button>
+                                <a type="button" class="btn btn-success btn-block" 
+                                    href="{{route('category.activeCategory',$category->id)}}">
+                                    {{ __('message.Active') }}
+                                </a>
                                 @else
-                                <button type="button" class="btn btn-warning btn-block" >
-                                    InActive
-                                </button>
+                                <a type="button" class="btn btn-warning btn-block" 
+                                    href="{{route('category.inActiveCategory',$category->id)}}">
+                                    {{ __('message.InActive') }}
+                                </a>
                             @endif
                         </td>
-                        <td>{{ $category->posts->count() }}</td>
+                        <td>{{ $category->created_at }}</td>
                         <td class="text-center">
                             <div class="btn-group content-align-center">
-                                <button type="button" class="btn btn-success" 
-                                    data-toggle="modal" data-target="#modal-lg-update-category" 
-                                         >
-                                    Edit
-                                </button>
-                                <a href="javascript:void(0)" class="btn btn-danger btn-sm delete" 
-                                    data-toggle="modal" data-target="#modal-warning" 
+                                <a type="button" class="btn btn-success"
+                                    href="{{route('categories.edit',$category->id)}}">
+                                    {{ __('message.Edit') }}
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-danger btn-sm delete"
+                                    data-toggle="modal" data-target="#modal-warning"
                                         data-id={{ $category->id }} >{{ __('message.Delete') }} </a>
                             </div>
                         </td>
@@ -63,17 +66,17 @@
                 @endforeach
             </tbody>
             @else
-                <p class="text-info text-center">There's No Categories In Your Database To Show Them</p>
+                <p class="text-info text-center">{{ __('message.Theres No Categories In Your Database To Show Them') }}</p>
             @endif
             <tfoot>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Description</th>
-                    <th>Active</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                    <th>{{ __('message.ID') }}</th>
+                    <th>{{ __('message.Title') }}</th>
+                    <th>{{ __('message.Image') }}</th>
+                    <th>{{ __('message.Description') }}</th>
+                    <th>{{ __('message.Active') }}</th>
+                    <th>{{ __('message.Date') }}</th>
+                    <th>{{ __('message.Actions') }}</th>
                 </tr>
             </tfoot>
         </table>
@@ -83,27 +86,26 @@
 <!-- /.card -->
 
 
-
-
-<div class="modal fade" id="modal-warning">
+ <!-- start /.modal delete -->
+<div class="modal fade delete" id="modal-warning">
         <div class="modal-dialog">
           <div class="modal-content bg-warning">
             <div class="modal-header">
-              <h4 class="modal-title text-white">Alert Message For Delete Row</h4>
+              <h4 class="modal-title text-white">{{ __('message.For Comfirm Delete Category') }}</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 
+
               </button>
             </div>
             <div class="modal-body">
-            <form class="delete" action="{{ url('/admin/categories/destroy',$category->id) }}">
-                {{ method_field('DELETE') }}
-                 @csrf_field
-                <input type="hidden" id="id" name="id" value="{{$category->id}}">
-              <div class="bg-danger text-white text-center"> Sure Delete Row </div> 
+            <form action="{{ route('categories.destroy',$category->id)}}" method="post">
+                {{ method_field('delete') }}
+                 {{ csrf_field() }}
+            <div class="bg-danger text-white text-center">{{ __('message.Sure Delete Category') }}</div>
+            <input type="hidden" id="id" name="id" value="">
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-outline-dark bg-danger">Delete</button>
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal">{{ __('message.Not Delete') }}</button>
+              <button type="submit" class="btn btn-outline-dark bg-danger">{{ __('message.Yes ! Delete') }}</button>
             </div>
             </form>
           </div>
@@ -111,17 +113,5 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal -->
-@endsection
-
-
-@section('scripts')
-<script>
-$(document).ready( function (){
-    $(document).on('click','.delete',function(){
-         let id = $(this).attr('data-id');
-         $('#id').val(id);
-    });
-});
-</script>
+      <!-- end /.modal delete -->
 @endsection

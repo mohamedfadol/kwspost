@@ -48,13 +48,13 @@
         </a>
         </li>
         <li class="nav-item">
-        <a href="{{ route('admin.categories') }}" class="nav-link">
+        <a href="{{ route('categories.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
-            <p>{{ __('message.Departments') }}</p>
-        </a>
+            <p>{{ __('message.Categories') }}</p>
+        </a> 
         </li>
         <li class="nav-item">
-        <a href="{{ route('admin.dashboard') }}" class="nav-link">
+        <a href="{{ route('posts.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>{{ __('message.Posts') }}</p>
         </a>

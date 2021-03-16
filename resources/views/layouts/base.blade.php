@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
- 
+        <title>{{ config('app.name', 'KWSPOST') }}</title>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -54,7 +54,6 @@
     @include('layouts.footer')
 </div>
 
-@yield('scripts')
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="{{ asset('/template/plugins/jquery/jquery.min.js') }}"></script>
@@ -156,6 +155,19 @@
   })
 
 </script>
+<script>
+    /* function for delete category with alert modal */
+    $("#modal-warning").on('show.bs.modal.delete', function(event){
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this);
+        modal.find('.modal-body #id').val(id);
+    });
+</script>
+
+@yield('scripts')
+
+@include('sweetalert::alert')
 
  </body>
 </html>

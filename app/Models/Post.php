@@ -24,5 +24,8 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-
+    public function setFilsAttribute($value)
+    {
+        $this->attributes['files'] = json_encode($value);
+    }
 }
