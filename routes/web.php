@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WebSettingController;
 use App\Http\Livewire\AdminDashboardComponent;
 use App\Http\Livewire\Department\DepartmentComponent;
 /*
@@ -28,11 +29,12 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        // route for admin
+        // route for admin 
         Route::middleware(['auth:sanctum', 'verified','isAdmin'])->group(function () {
 
             Route::get('/admin/dashboard' , [HomeController::class ,'index'])->name('admin.dashboard');
-            
+            Route::resource('webSetting' , WebSettingController::class);
+
             Route::resource('categories' , CategoryController::class);
             Route::get('/admin/categories/active/{category}' , [CategoryController::class,'activeCategory'])
                     ->name('category.activeCategory');

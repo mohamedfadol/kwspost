@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 <!-- Brand Logo -->
-<a href="index3.html" class="brand-link">
+<a href="<?php echo e(route('admin.dashboard')); ?>" class="brand-link">
     <img src="<?php echo e(asset('/template/dist/img/AdminLTELogo.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light"><?php echo e(__('message.Kws-Post')); ?></span>
+    <span class="brand-text font-weight-light"><?php echo e(__('message.Kws-Post')); ?> </span>
 </a>
 
 <!-- Sidebar -->
@@ -60,9 +60,9 @@
         </a>
         </li>
         <li class="nav-item">
-        <a href="<?php echo e(route('admin.dashboard')); ?>" class="nav-link">
+        <a href="<?php echo e(route('webSetting.index')); ?>" class="nav-link">
             <i class="nav-icon far fa-image"></i>
-            <p><?php echo e(__('message.Controling Users')); ?></p>
+            <p><?php echo e(__('message.web Setting')); ?></p>
         </a>
         </li>
         <li class="nav-item">
