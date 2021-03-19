@@ -34,7 +34,9 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->title }}</td>
                         <td class="text-center">
-                            <img src="{{ URL::asset('/storage/category/image/'.$category->file) }}" width="80" />
+                            <img  class="img-thumbnail" 
+                                src="{{ URL::asset('/storage/category/image/'.$category->file) }}" 
+                                    width="80" />
                         </td>
                         <td>{{ $category->description }}</td>
                         <td class="text-center">

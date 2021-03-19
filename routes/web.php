@@ -34,6 +34,8 @@ Route::group(
 
             Route::get('/admin/dashboard' , [HomeController::class ,'index'])->name('admin.dashboard');
             Route::resource('webSetting' , WebSettingController::class);
+            Route::get('/admin/webSetting/{post}' , [WebSettingController::class,'edit'])
+            ->name('webSetting.edit');
 
             Route::resource('categories' , CategoryController::class);
             Route::get('/admin/categories/active/{category}' , [CategoryController::class,'activeCategory'])

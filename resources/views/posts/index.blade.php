@@ -39,7 +39,9 @@
                         </a>
                         </td>
                         <td class="text-center">
-                            <img src="{{ URL::asset('/storage/post/image/'.$post->file) }}" width="80" />
+                            <img class="img-thumbnail" 
+                                src="{{ URL::asset('/storage/post/image/'.$post->file) }}" 
+                                    width="80" />
                         </td>
                         <td>{{ $post->category->title }}</td>
 

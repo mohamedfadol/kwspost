@@ -108,7 +108,7 @@ class PostController extends Controller
 
     public function activePost(Post $post)
     { 
-        $post = Post::findOrFail($Post->id);
+        $post = Post::findOrFail($post->id);
         if ($post && $post->active == 0 ) {
         $post->active = 1;  
         $post->update();
