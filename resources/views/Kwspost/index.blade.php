@@ -14,7 +14,6 @@
 
 @section('content')
     <!-- Main content -->
-    @foreach($Kwsposts as $Kwspost)
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -113,5 +112,4 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    @endforeach
 @endsection

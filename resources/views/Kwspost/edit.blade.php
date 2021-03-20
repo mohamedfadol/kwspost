@@ -9,7 +9,7 @@
             @if(session()->has('message'))
              <div class="alert alert-success text-center toastrDefaultSuccess"> {{ session('message') }} </div>
             @endif
-            <form action="{{ route('webSetting.update',$Kwspost->id) }}" 
+            <form action="{{ route('webSetting.update',$Kwspost) }}" 
                 method="POST" enctype="multipart/form-data">
             {{ method_field('PUT') }}
             {{ csrf_field() }}

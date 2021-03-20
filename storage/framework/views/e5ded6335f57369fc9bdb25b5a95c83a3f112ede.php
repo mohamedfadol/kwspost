@@ -14,7 +14,6 @@
 
 <?php $__env->startSection('content'); ?>
     <!-- Main content -->
-    <?php $__currentLoopData = $Kwsposts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Kwspost): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -114,7 +113,6 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\kwspost\resources\views/Kwspost/index.blade.php ENDPATH**/ ?>
