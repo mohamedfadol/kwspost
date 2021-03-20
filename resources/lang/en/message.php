@@ -75,10 +75,36 @@ return [
     "Category Images" => "Category Images",
     "Category Image" => "Category Image",
     "Category Title" => "Category Title",
-
-
-
-
-
+    "Contact Information" => "Contact Information",
+    "Create New Web Home Setting" => "Create New Web Home Setting",
+    "E-mail" => "E-mail",
+    "Phone Number 1" => "Phone Number 1",
+    "Phone Number 2" => "Phone Number 2",
+    "Phone Number 3" => "Phone Number 3",
+    "Web Setting Home" => "Web Setting Home",
+    "Logo Image" => "Logo Image",
+    "Title Web" => "Title Web",
+    "header Content" => "header Content",
+    "footer Content" => "footer Content",
+    "Description About Us" => "Description About Us",
+    "Upload Image" => "Upload Image",
+    "Create New Web Home Details" => "Create New Web Home Details",
+    "Upload New Logo Image" => "Upload New Logo Image",
+    "Web Setting" => "Web Setting",
+    "New Post" => "New Post",
+    "Post Title" => "Post Title",
+    "Image" => "Image",
+    "Post Category" => "Post Category",
+    "Post Active" => "Post Active",
+    "Post Date" => "Post Date",
+    "Theres No Posts In Your Database To Show Them" => "Theres No Posts In Your Database To Show Them",
+    "For Comfirm Delete Post" => "For Comfirm Delete Post",
+    "Sure Delete Post" => "Sure Delete Post",
+    "Yes ! Delete" => "Yes ! Delete",
+    "Posts List" => "Posts List",
+    "Post Image" => "Post Image",
+    "Post Images" => "Post Images",
+    "Post Short Description" => "Post Short Description",
+    "Post Long Description" => "Post Long Description",
 
 ];

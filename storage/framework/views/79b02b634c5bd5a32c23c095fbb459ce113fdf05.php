@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="<?php echo e(asset('/template/plugins/bs-stepper/css/bs-stepper.min.css')); ?>">
   <!-- dropzonejs -->
   <link rel="stylesheet" href="<?php echo e(asset('/template/plugins/dropzone/min/dropzone.min.css')); ?>">
-  
+
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo e(asset('/template/dist/css/adminlte.min.css')); ?>">
   <link rel="stylesheet" href="<?php echo e(asset('/template/plugins/summernote/summernote-bs4.min.css')); ?>">
@@ -288,7 +288,7 @@
 <script>
   $(function () {
     //Add text editor
-    $('#compose-textarea').summernote()
+    $('#compose-textarea').summernote();
   })
 </script>
 <script>

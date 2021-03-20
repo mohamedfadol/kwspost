@@ -13,7 +13,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         if ( session('success')){
@@ -66,21 +66,21 @@ class PostController extends Controller
             // dd($path);
         }else{
             $fileNameToStore = 'No Images To Store In .jpg';
-        } 
+        }
         if ($request->hasFile('files')) {
             $files = [];
             if($request->hasfile('files')){
                 foreach($request->file('files') as $file){
                     $name = time().rand(1,100).'.'.$file->extension();
                     $folder = '/public/post/images';
-                    $file->storeAs($folder, $name);  
-                    $files[] = $name;  
+                    $file->storeAs($folder, $name);
+                    $files[] = $name;
                 }
              }
         }else{
             $files = 'No Images To Store In .jpg';
         }
-        
+
         $post = new Post();
         $post->title             =  $request->input('title');
         $post->short_description =  $request->input('short_description');
@@ -96,27 +96,27 @@ class PostController extends Controller
     }
 
     public function inActivePost(Post $post)
-    { 
+    {
         $post = Post::findOrFail($post->id);
         if ($post && $post->active == 1 ) {
-        $post->active = 0;  
+        $post->active = 0;
         $post->update();
-        return redirect(route('posts.index'))->with('success', 'Post Has Been In Active'); 
+        return redirect(route('posts.index'))->with('success', 'Post Has Been In Active');
         }
- 
+
     }
 
     public function activePost(Post $post)
-    { 
+    {
         $post = Post::findOrFail($post->id);
         if ($post && $post->active == 0 ) {
-        $post->active = 1;  
+        $post->active = 1;
         $post->update();
-        return redirect(route('posts.index'))->with('success' ,'Post Has Been Actived'); 
+        return redirect(route('posts.index'))->with('success' ,'Post Has Been Actived');
         }
- 
+
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -140,7 +140,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+          $post = Post::findOrFail($post->id);
+          $categories = Category::orderBy('id','desc')->get();
+        if ($post) {
+            return view('posts.edit')->with(['post' => $post,'categories' => $categories]);;
+        }
+        return  back()->with(['message' => 'Post Not Found']);
     }
 
     /**
@@ -152,7 +157,56 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+           // dd($request->all());
+           $this->validate($request, [
+            'title'             => 'required|string',
+            'short_description' => 'nullable|string',
+            'long_description'  => 'nullable|string',
+            'category_id'       => 'required',
+            'file'              => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'files.*'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if ($request->hasFile('file')) {
+            // Get File Name With Extenison
+            $fileNameWithEex = $request->file('file')->getClientOriginalName();
+            // Get fileName Only
+            $fileName = pathinfo($fileNameWithEex , PATHINFO_FILENAME);
+            // Get FileExtenison
+            $extension = $request->file('file')->getClientOriginalExtension();
+            // fileName To Store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            // Upload file
+            $folder = '/public/post/image';
+            $path = $request->file('file')->storeAs($folder, $fileNameToStore);
+            // dd($path);
+        }else{
+            $fileNameToStore = 'No Images To Store In .jpg';
+        }
+        if ($request->hasFile('files')) {
+            $files = [];
+            if($request->hasfile('files')){
+                foreach($request->file('files') as $file){
+                    $name = time().rand(1,100).'.'.$file->extension();
+                    $folder = '/public/post/images';
+                    $file->storeAs($folder, $name);
+                    $files[] = $name;
+                }
+             }
+        }else{
+            $files = 'No Images To Store In .jpg';
+        }
+
+        $post = Post::findOrFail($post->id);
+        $post->title             =  $request->input('title');
+        $post->short_description =  $request->input('short_description');
+        $post->long_description  =  $request->input('long_description');
+        $post->category_id       =  $request->input('category_id');
+        $post->file              =  $fileNameToStore;
+        $post->files             =  json_encode($files);
+        $post->active            =  $request->active == null ? '0' : 1;
+        $post->user_id           =  auth()->user()->id ;
+        $post->save();
+        return redirect(route('posts.index'))->with('success' ,'Post Has Been Inserted');
     }
 
     /**

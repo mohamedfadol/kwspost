@@ -17,7 +17,7 @@
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
-                <tr> 
+                <tr>
                     <th>{{ __('message.ID') }}</th>
                     <th>{{ __('message.Post Title') }}</th>
                     <th>{{ __('message.Image') }}</th>
@@ -33,26 +33,26 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>
-                        <a type="button" class="btn btn-info btn-block" 
+                        <a type="button" class="btn btn-info btn-block"
                             href="{{route('posts.show',$post->id)}}">
                                 {{ $post->title }}
                         </a>
                         </td>
                         <td class="text-center">
-                            <img class="img-thumbnail" 
-                                src="{{ URL::asset('/storage/post/image/'.$post->file) }}" 
+                            <img class="img-thumbnail"
+                                src="{{ URL::asset('/storage/post/image/'.$post->file) }}"
                                     width="80" />
                         </td>
                         <td>{{ $post->category->title }}</td>
 
                         <td class="text-center">
                             @if($post->active == 0)
-                                <a type="button" class="btn btn-success btn-block" 
+                                <a type="button" class="btn btn-success btn-block"
                                     href="{{route('post.activePost',$post->id)}}">
                                     {{ __('message.Active') }}
                                 </a>
                                 @else
-                                <a type="button" class="btn btn-warning btn-block" 
+                                <a type="button" class="btn btn-warning btn-block"
                                     href="{{route('post.inActivePost',$post->id)}}">
                                     {{ __('message.InActive') }}
                                 </a>

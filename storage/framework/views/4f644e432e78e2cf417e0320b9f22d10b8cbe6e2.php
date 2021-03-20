@@ -51,7 +51,7 @@
         <a href="<?php echo e(route('categories.index')); ?>" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p><?php echo e(__('message.Categories')); ?></p>
-        </a> 
+        </a>
         </li>
         <li class="nav-item">
         <a href="<?php echo e(route('posts.index')); ?>" class="nav-link">
@@ -62,7 +62,7 @@
         <li class="nav-item">
         <a href="<?php echo e(route('webSetting.index')); ?>" class="nav-link">
             <i class="nav-icon far fa-image"></i>
-            <p><?php echo e(__('message.web Setting')); ?></p>
+            <p><?php echo e(__('message.Web Setting')); ?></p>
         </a>
         </li>
         <li class="nav-item">

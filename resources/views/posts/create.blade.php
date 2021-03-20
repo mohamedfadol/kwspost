@@ -8,7 +8,7 @@
         @endif
         <h3 class="card-title">
             <div class="btn-group">
-                <a type="button"  class="btn btn-success" href="{{route('posts.index')}}">{{ __('message.Back') }}</a> 
+                <a type="button"  class="btn btn-success" href="{{route('posts.index')}}">{{ __('message.Back') }}</a>
             </div>
             <div class="btn-group">
                 <a type="button"  class="btn btn-info" href="{{route('posts.index')}}">{{ __('message.Posts List') }}</a>
@@ -35,7 +35,7 @@
                     <div class="card-body">
                     <div class="mb-3 text-center">
                 <div class="preview img-thumbnail"></div>
-               </div> 
+               </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,12 +45,14 @@
                 </div>
                 <div class="form-group">
                     <label for="short_description">{{ __('message.Post Short Description') }}</label>
-                    <textarea type="text" name="short_description" class="form-control form-control-sm" id="short_description" placeholder="Enter Designation Details"></textarea>
+                    <textarea  name="short_description" class="form-control "
+                        id="compose-textarea" placeholder="Enter Post Short Description" style="height: 300px"></textarea>
                     @error('short_description') <span class="text-danger">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="long_description">{{ __('message.Post Long Description') }}</label>
-                    <textarea type="text" name="long_description" class="form-control form-control-sm" id="long_description" placeholder="Enter Designation Details"></textarea>
+                    <textarea  name="long_description" class="form-control"
+                        id="compose-textarea" placeholder="Enter Post Long Description" style="height: 300px"></textarea>
                     @error('long_description') <span class="text-danger">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -60,7 +62,7 @@
                                 <option value="">Choose ... Branch</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
-                                    @endforeach    
+                                    @endforeach
                                 @endif
                     </select>
                      @error('category_id') <span class="text-danger">{{$message}}</span>@enderror
@@ -106,7 +108,7 @@
         $('#multiImg').on('change', function() {
             imgPrev(this, 'div.preview');
         });
-    });    
+    });
     </script>
 
 <script>
@@ -123,7 +125,7 @@
     $("#file").change(function(){
         readURL(this);
     });
-    /* function for perview image*/    
+    /* function for perview image*/
 </script>
 
 @endsection

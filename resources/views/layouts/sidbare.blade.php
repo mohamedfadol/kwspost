@@ -51,7 +51,7 @@
         <a href="{{ route('categories.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>{{ __('message.Categories') }}</p>
-        </a> 
+        </a>
         </li>
         <li class="nav-item">
         <a href="{{ route('posts.index') }}" class="nav-link">
@@ -62,7 +62,7 @@
         <li class="nav-item">
         <a href="{{ route('webSetting.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
-            <p>{{ __('message.web Setting') }}</p>
+            <p>{{ __('message.Web Setting') }}</p>
         </a>
         </li>
         <li class="nav-item">
