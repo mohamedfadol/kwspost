@@ -184,4 +184,13 @@ unset($__errorArgs, $__bag); ?>
     <!-- /.content -->
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('scripts'); ?>
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote();
+  })
+</script>
+<?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\kwspost\resources\views/Kwspost/create.blade.php ENDPATH**/ ?>

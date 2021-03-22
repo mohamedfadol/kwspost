@@ -46,7 +46,8 @@
                 <div class="form-group">
                     <label for="short_description">{{ __('message.Post Short Description') }}</label>
                     <textarea  name="short_description" class="form-control "
-                        id="compose-textarea" placeholder="Enter Post Short Description" style="height: 300px"></textarea>
+                        id="short_description" placeholder="Enter Post Short Description">
+                    </textarea>
                     @error('short_description') <span class="text-danger">{{$message}}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -83,6 +84,15 @@
 <!-- /.card -->
 
 @endsection
+
+@section('scripts')
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote();
+  })
+</script>
+@stop
 
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

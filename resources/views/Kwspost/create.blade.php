@@ -123,3 +123,12 @@
     </section>
     <!-- /.content -->
 @endsection
+
+@section('scripts')
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote();
+  })
+</script>
+@stop

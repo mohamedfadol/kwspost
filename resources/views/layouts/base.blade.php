@@ -285,12 +285,6 @@
   // DropzoneJS Demo Code End
 </script>
 <script>
-  $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote();
-  })
-</script>
-<script>
     /* function for delete category with alert modal */
     $("#modal-warning").on('show.bs.modal.delete', function(event){
         var button = $(event.relatedTarget);

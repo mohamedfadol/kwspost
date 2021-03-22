@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('content'); ?>
 <div class="card">
             <?php if(session()->has('success')): ?>

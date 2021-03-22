@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">{{ __('message.Category Description') }}</label>
-                    <textarea type="text" name="description" class="form-control form-control-sm" id="description">
+                    <textarea  name="description" class="form-control form-control-sm" id="compose-textarea">
                          {{ $category->description }}
                     </textarea>
                     @error('description') <span class="text-danger">{{$message}}</span>@enderror
@@ -66,6 +66,15 @@
 <!-- /.card -->
 
 @endsection
+
+@section('scripts')
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote();
+  })
+</script>
+@stop
 
 @section('scripts')
 <script>

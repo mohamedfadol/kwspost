@@ -66,7 +66,8 @@ unset($__errorArgs, $__bag); ?>
                 <div class="form-group">
                     <label for="short_description"><?php echo e(__('message.Post Short Description')); ?></label>
                     <textarea  name="short_description" class="form-control "
-                        id="compose-textarea" placeholder="Enter Post Short Description" style="height: 300px"></textarea>
+                        id="short_description" placeholder="Enter Post Short Description">
+                    </textarea>
                     <?php $__errorArgs = ['short_description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -123,6 +124,15 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <!-- /.card -->
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote();
+  })
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('scripts'); ?>

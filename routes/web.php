@@ -21,7 +21,7 @@ use App\Http\Livewire\Department\DepartmentComponent;
 Route::get('/', function () {
     return view('welcome');
 });
- 
+
 // Start LaravelLocalization Admin Route Group For Aurages Panel
 Route::group(
     [
@@ -29,7 +29,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        // route for admin 
+        // route for admin
         Route::middleware(['auth:sanctum', 'verified','isAdmin'])->group(function () {
 
             Route::get('/admin/dashboard' , [HomeController::class ,'index'])->name('admin.dashboard');
